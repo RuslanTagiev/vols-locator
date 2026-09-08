@@ -1,0 +1,83 @@
+/* src/App.css */
+
+/* Базовые переменные проекта для исключения повторов в коде */
+:root {
+  --bg-main: #242424;
+  --bg-panel: #1a1a1a;
+  --bg-input: #333333;
+  --border-color: #555555;
+  --text-color: #ffffff;
+  --accent-red: #ff4d4d;
+  --accent-green: #00cc66;
+  --radius-main: 6px;
+  --radius-card: 12px;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row; /* Сайдбар и карта стоят бок о бок на десктопе */
+  font-family: sans-serif;
+  background-color: var(--bg-main);
+}
+
+/* Десктопный режим по умолчанию для карты */
+.map-wrapper,
+.map-container {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+
+/* МЕДИА-ЗАПРОС ДЛЯ ТЕЛЕФОНОВ (Смартфоны и планшеты) */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: 100svh; /* svh защищает от обрезки нижнее меню приложения */
+    overflow: hidden;
+  }
+
+  /* Ограничиваем карту, чтобы она не выталкивала меню */
+  .map-wrapper {
+    flex: none;
+    height: 50svh;
+    width: 100%;
+  }
+
+  .map-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Стили для панели управления, когда она становится нижним меню */
+  .sidebar-controls,
+  .header-controls,
+  .controls-wrapper,
+  div[class*="controls"] {
+    flex: 1;
+    height: 50svh;
+    overflow-y: auto;
+    padding: 12px;
+    box-sizing: border-box;
+    background-color: var(--bg-panel);
+    padding-bottom: 30px; /* Защитный зазор снизу для кнопок Выйти / Рассчитать */
+  }
+}
+
+/* Стили для всплывающих облачков (Popup) на самой карте */
+.node-popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.popup-title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.popup-accident-title {
+  color: var(--accent-red);
+  font-size: 14px;
+}

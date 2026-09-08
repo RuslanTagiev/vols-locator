@@ -1,0 +1,178 @@
+/* src/components/AddNodeModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  /* svh учитывает нижнее меню мобильных браузеров и не дает окну уйти под него */
+  height: 100svh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.modal-container {
+  background: var(--bg-main);
+  color: var(--text-color);
+  width: 100%;
+  max-width: 550px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #444;
+  box-sizing: border-box;
+  padding: 16px;
+
+  /* Ограничиваем высоту контейнера под чистую зону экрана смартфона */
+  max-height: 82svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  flex: none;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.modal-close-x {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 26px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Скроллится только этот блок полей ввода */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 8px;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-label {
+  font-size: 12px;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.type-card {
+  padding: 8px 10px;
+  background: var(--bg-input);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+}
+
+.type-card-active {
+  border-color: var(--accent-green);
+  background: rgba(0, 204, 102, 0.15);
+  font-weight: bold;
+}
+
+.form-row-two-columns,
+.form-row-three-columns {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row-two-columns .form-group,
+.form-row-three-columns .form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-input-field {
+  padding: 10px;
+  background: var(--bg-input);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main);
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-input-field:focus {
+  outline: none;
+  border-color: var(--accent-green);
+}
+
+/* Кнопки теперь всегда видны, так как они вне зоны скролла формы */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #444;
+  padding-top: 16px;
+  margin-top: 8px;
+  flex: none;
+  background: var(--bg-main);
+}
+
+.btn-modal-cancel,
+.btn-modal-save,
+.btn-reset {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radius-main);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-modal-cancel,
+.btn-reset {
+  background: #333;
+  color: var(--text-color);
+  border: 1px solid #555;
+}
+
+.btn-modal-save {
+  background: var(--accent-green);
+  color: var(--text-color);
+}
+
+@media (max-width: 500px) {
+  .form-row-two-columns,
+  .form-row-three-columns {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
